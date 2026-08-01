@@ -1,0 +1,18 @@
+{
+  "name": "domain-procurement-core",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "domains/procurement-core",
+  "projectType": "library",
+  "tags": ["scope:domain", "domain:procurement-core"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/domains/procurement-core",
+        "main": "domains/procurement-core/index.ts",
+        "tsConfig": "domains/procurement-core/tsconfig.lib.json"
+      }
+    }
+  }
+}

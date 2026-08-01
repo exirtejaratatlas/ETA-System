@@ -1,0 +1,18 @@
+{
+  "name": "apps-bff",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/bff/src",
+  "projectType": "application",
+  "tags": ["scope:app", "app:bff"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/bff",
+        "main": "apps/bff/src/main.ts",
+        "tsConfig": "apps/bff/tsconfig.lib.json"
+      }
+    }
+  }
+}

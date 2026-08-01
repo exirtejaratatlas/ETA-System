@@ -1,0 +1,72 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          { "type": "command", "command": "bash .claude/hooks/before-write.sh", "timeout": 10, "statusMessage": "Checking write target..." },
+          { "type": "command", "command": "bash .claude/hooks/before-adr.sh", "timeout": 10, "statusMessage": "Checking ADR process..." },
+          { "type": "command", "command": "bash .claude/hooks/before-companyprofile.sh", "timeout": 10, "statusMessage": "Checking scope guard..." },
+          { "type": "command", "command": "bash .claude/hooks/before-implementation.sh", "timeout": 10, "statusMessage": "Checking implementation order..." }
+        ]
+      },
+      {
+        "matcher": "Edit",
+        "hooks": [
+          { "type": "command", "command": "bash .claude/hooks/before-edit.sh", "timeout": 10, "statusMessage": "Checking edit target..." },
+          { "type": "command", "command": "bash .claude/hooks/before-companyprofile.sh", "timeout": 10, "statusMessage": "Checking scope guard..." },
+          { "type": "command", "command": "bash .claude/hooks/before-implementation.sh", "timeout": 10, "statusMessage": "Checking implementation order..." }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "command": "bash .claude/hooks/before-commit.sh", "timeout": 10, "statusMessage": "Checking commit safety..." },
+          { "type": "command", "command": "bash .claude/hooks/before-push.sh", "timeout": 10, "statusMessage": "Checking push safety..." },
+          { "type": "command", "command": "bash .claude/hooks/before-delete.sh", "timeout": 10, "statusMessage": "Checking delete safety..." },
+          { "type": "command", "command": "bash .claude/hooks/before-odoo.sh", "timeout": 10, "statusMessage": "Checking Odoo safety..." },
+          { "type": "command", "command": "bash .claude/hooks/before-website.sh", "timeout": 10, "statusMessage": "Checking website scope..." },
+          { "type": "command", "command": "bash .claude/hooks/before-docker.sh", "timeout": 10, "statusMessage": "Checking Docker safety..." },
+          { "type": "command", "command": "bash .claude/hooks/before-git-sync.sh", "timeout": 10, "statusMessage": "Checking branch reconciliation..." },
+          { "type": "command", "command": "bash .claude/hooks/before-branch-creation.sh", "timeout": 10, "statusMessage": "Checking existing branches..." },
+          { "type": "command", "command": "bash .claude/hooks/before-merge.sh", "timeout": 10, "statusMessage": "Checking merge safety..." }
+        ]
+      },
+      {
+        "matcher": "mcp__.*",
+        "hooks": [
+          { "type": "command", "command": "bash .claude/hooks/before-knowledge-read.sh", "timeout": 10, "statusMessage": "Checking knowledge cache..." },
+          { "type": "command", "command": "bash .claude/hooks/before-discovery.sh", "timeout": 10, "statusMessage": "Checking discovery log..." }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/check-adr-sequence.sh",
+            "timeout": 10,
+            "statusMessage": "Checking ADR sequence..."
+          },
+          { "type": "command", "command": "bash .claude/hooks/after-documentation.sh", "timeout": 10, "statusMessage": "Checking documentation sync..." },
+          { "type": "command", "command": "bash .claude/hooks/after-index-update.sh", "timeout": 10, "statusMessage": "Checking discovery log sync..." }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "command": "bash .claude/hooks/after-commit.sh", "timeout": 10, "statusMessage": "Post-commit check..." },
+          { "type": "command", "command": "bash .claude/hooks/after-push.sh", "timeout": 10, "statusMessage": "Post-push check..." }
+        ]
+      },
+      {
+        "matcher": "mcp__.*",
+        "hooks": [
+          { "type": "command", "command": "bash .claude/hooks/after-discovery.sh", "timeout": 10, "statusMessage": "Post-discovery reminder..." }
+        ]
+      }
+    ]
+  }
+}

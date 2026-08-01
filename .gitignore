@@ -3,6 +3,7 @@
 node_modules/
 .next/
 dist/
+out-tsc/
 build/
 coverage/
 .env
@@ -15,3 +16,9 @@ Thumbs.db
 postgres/
 logs/
 backups/
+# Nx
+.nx/cache/
+.nx/workspace-data/
+.nx/*
+
+

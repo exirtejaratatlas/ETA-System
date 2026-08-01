@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "../../dist/domains-out-tsc/suppliers",
+    "declaration": true,
+    "types": ["node"],
+    "rootDir": "."
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["**/*.spec.ts"],
+  "references": [
+    { "path": "../../platform/kernel/tsconfig.lib.json" },
+    { "path": "../../platform/odoo/tsconfig.lib.json" }
+  ]
+}

@@ -1,0 +1,307 @@
+{
+  "generated_at": "2026-07-24T08:22:16.101051Z",
+  "generated_by": "manual run, .claude/index/repository-index.json build script (see .claude/index/semantic-index.md)",
+  "note": "Structural index only (what exists, not what it means). Regenerate rather than hand-edit after any structural change.",
+  "top_level_packages": {
+    "apps": [
+      {
+        "name": "bff",
+        "has_src": true,
+        "has_readme": true,
+        "file_count": 18
+      },
+      {
+        "name": "gateway",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 1
+      },
+      {
+        "name": "web",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 1
+      },
+      {
+        "name": "workers",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 1
+      }
+    ],
+    "domains": [
+      {
+        "name": "catalog",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 7
+      },
+      {
+        "name": "contracts",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 7
+      },
+      {
+        "name": "invoicing",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 7
+      },
+      {
+        "name": "procurement-core",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 29
+      },
+      {
+        "name": "sourcing",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 7
+      },
+      {
+        "name": "suppliers",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 30
+      }
+    ],
+    "platform": [
+      {
+        "name": "audit",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 1
+      },
+      {
+        "name": "design-system",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 1
+      },
+      {
+        "name": "documents",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 1
+      },
+      {
+        "name": "events",
+        "has_src": true,
+        "has_readme": true,
+        "file_count": 18
+      },
+      {
+        "name": "feature-flags",
+        "has_src": true,
+        "has_readme": true,
+        "file_count": 15
+      },
+      {
+        "name": "kernel",
+        "has_src": true,
+        "has_readme": true,
+        "file_count": 25
+      },
+      {
+        "name": "observability",
+        "has_src": true,
+        "has_readme": true,
+        "file_count": 15
+      },
+      {
+        "name": "persistence",
+        "has_src": true,
+        "has_readme": true,
+        "file_count": 21
+      },
+      {
+        "name": "plugins",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 1
+      },
+      {
+        "name": "secrets",
+        "has_src": true,
+        "has_readme": true,
+        "file_count": 15
+      },
+      {
+        "name": "workflow-engine",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 1
+      }
+    ],
+    "ai": [
+      {
+        "name": "agents",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 1
+      },
+      {
+        "name": "knowledge",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 12
+      },
+      {
+        "name": "mcp-registry",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 1
+      },
+      {
+        "name": "memory",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 1
+      },
+      {
+        "name": "orchestrator",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 5
+      },
+      {
+        "name": "prompts",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 1
+      }
+    ],
+    "integrations": [
+      {
+        "name": "crm",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 1
+      },
+      {
+        "name": "odoo",
+        "has_src": true,
+        "has_readme": true,
+        "file_count": 23
+      },
+      {
+        "name": "punchout",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 1
+      }
+    ],
+    "data": [
+      {
+        "name": "feature-store",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 1
+      },
+      {
+        "name": "pipeline",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 1
+      },
+      {
+        "name": "warehouse",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 1
+      }
+    ],
+    "infra": [
+      {
+        "name": "environments",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 1
+      },
+      {
+        "name": "iac",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 1
+      },
+      {
+        "name": "k8s",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 1
+      },
+      {
+        "name": "messaging",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 1
+      },
+      {
+        "name": "observability",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 1
+      },
+      {
+        "name": "secrets",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 1
+      }
+    ],
+    "governance": [
+      {
+        "name": "ai-governance",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 2
+      },
+      {
+        "name": "compliance",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 1
+      },
+      {
+        "name": "security",
+        "has_src": false,
+        "has_readme": true,
+        "file_count": 2
+      }
+    ],
+    "docs": [
+      {
+        "name": "architecture",
+        "has_src": false,
+        "has_readme": false,
+        "file_count": 5
+      },
+      {
+        "name": "decisions",
+        "has_src": false,
+        "has_readme": false,
+        "file_count": 15
+      },
+      {
+        "name": "setup",
+        "has_src": false,
+        "has_readme": false,
+        "file_count": 1
+      },
+      {
+        "name": "standards",
+        "has_src": false,
+        "has_readme": false,
+        "file_count": 3
+      },
+      {
+        "name": "templates",
+        "has_src": false,
+        "has_readme": false,
+        "file_count": 2
+      }
+    ]
+  }
+}

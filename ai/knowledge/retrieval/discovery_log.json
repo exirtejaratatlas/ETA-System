@@ -1,0 +1,198 @@
+{
+  "discoveries": [
+    {
+      "discovery_id": "DISC-0001",
+      "timestamp": "2026-07-23T13:00:00+00:00",
+      "scope": "Initial exhaustive traversal of ETA-Knowledge-v1 top level and the 00-KNOWLEDGE/ nested taxonomy.",
+      "sources_inspected": [
+        "ETA-Knowledge-v1/ (root, all top-level folders)",
+        "ETA-Knowledge-v1/00-KNOWLEDGE/ (nested taxonomy)",
+        "ETA-Knowledge-v1/ETA-Platform/config/ (docker-compose.yml, .env, postgres/, odoo/, logs/)"
+      ],
+      "new_findings": [
+        "Most top-level folders are 0-byte placeholders",
+        "00-KNOWLEDGE/ is a second, parallel numbered taxonomy",
+        "Real content exists: brand assets, Iranian steel manufacturer data, daily price lists, real commercial documents",
+        "An exposed .env file and a live/crashed Postgres data directory exist under ETA-Platform/config/"
+      ],
+      "updated_findings": [],
+      "superseded_findings": []
+    },
+    {
+      "discovery_id": "DISC-0002",
+      "timestamp": "2026-07-23T13:30:00+00:00",
+      "scope": "Direct read of ETA-Platform/config/docker-compose.yml content (base64-decoded).",
+      "sources_inspected": [
+        "ETA-Platform/config/docker-compose.yml (file ID 1qQGag4-tma2VZcYK32ZGNgShb754ahXA)"
+      ],
+      "new_findings": [
+        "Postgres 16, db name 'eta', from-source Odoo build with custom_addons mount",
+        "Hardcoded weak odoo/odoo credentials \u2014 flagged as prior art to learn from, not repeat"
+      ],
+      "updated_findings": [],
+      "superseded_findings": []
+    },
+    {
+      "discovery_id": "DISC-0003",
+      "timestamp": "2026-07-23T14:00:00+00:00",
+      "scope": "Subagent-delegated deep traversal of the ETA-Blueprint Obsidian vault (both duplicate Drive paths).",
+      "sources_inspected": [
+        "ETA-Knowledge-v1/ETA-Blueprint/ (full tree)",
+        "ETA-Knowledge-v1/00-KNOWLEDGE/15-BLUEPRINT/ (confirmed byte-identical duplicate)"
+      ],
+      "new_findings": [
+        "Vault confirmed duplicated at two paths, byte-identical",
+        "Reported (not yet directly re-verified at time of this record): Technology-Stack.md tech stack, Stakeholders.md org chart + integrated systems, Enterprise Data Dictionary Allison General Trading LLC mention, Data-Classification 5-tier scheme, Project Constitution decision hierarchy"
+      ],
+      "updated_findings": [],
+      "superseded_findings": []
+    },
+    {
+      "discovery_id": "DISC-0004",
+      "timestamp": "2026-07-23T18:00:00+00:00",
+      "scope": "First direct-evidence re-verification pass, in response to the evidence-citation standard: re-fetched several files' exact metadata live rather than relying on the DISC-0003 subagent report.",
+      "sources_inspected": [
+        "docker-compose.yml (metadata re-fetch)",
+        "Invoice.docx (full metadata + content snippet)",
+        "ETA Offer_Template.xlsx (full metadata + content snippet)",
+        "Technology-Stack.md, both copies (full content read)"
+      ],
+      "new_findings": [],
+      "updated_findings": [
+        "Confirmed live: docker-compose.yml has no inventory entry yet at time of check (later fixed)",
+        "Confirmed live: Technology-Stack.md pnpm+Turborepo monorepo conflict, not previously called out as precisely as the FastAPI/Python conflict"
+      ],
+      "superseded_findings": []
+    },
+    {
+      "discovery_id": "DISC-0005",
+      "timestamp": "2026-07-23T18:15:00+00:00",
+      "scope": "Second, deeper evidence re-verification pass: full-content reads of Stakeholders.md, Enterprise Data Dictionary.md, Project Constitution.md, PROJECT_RULES.md \u2014 specifically to promote DISC-0003's subagent-reported findings to directly-VERIFIED status.",
+      "sources_inspected": [
+        "Stakeholders.md (full content, including the Integrated Systems section truncated out of the earlier snippet)",
+        "Enterprise Data Dictionary.md (full content, including Organization Master Data section)",
+        "Project Constitution.md (Documentation Strategy section)",
+        "PROJECT_RULES.md (full content, short file)"
+      ],
+      "new_findings": [],
+      "updated_findings": [
+        "Microsoft Dynamics CRM + Odoo ERP under '# Integrated Systems' \u2014 promoted from INFERRED (DISC-0003) to VERIFIED",
+        "Allison General Trading LLC under '# Organization Master Data' \u2014 promoted from INFERRED (DISC-0003) to VERIFIED (the document text is verified; whether it denotes a real subsidiary remains unconfirmed with the user)",
+        "'If it is not documented, it does not exist' governance rule \u2014 VERIFIED"
+      ],
+      "superseded_findings": [
+        "DISC-0003's un-re-verified claims about these same three documents are superseded by this record's direct reads \u2014 DISC-0003 itself is not deleted, since it accurately reflects what was known at that time"
+      ]
+    },
+    {
+      "discovery_id": "DISC-0006",
+      "timestamp": "2026-07-23T17:30:00+00:00",
+      "scope": "Read-only Docker/PostgreSQL/Odoo environment audit of a pre-existing, independently-running Odoo instance discovered at /Users/ali/Development/ETA/ (unrelated to this repository).",
+      "sources_inspected": [
+        "docker inspect eta-odoo, eta-postgres",
+        "docker exec eta-postgres psql \u2014 database list, ir_module_module, res_company, res_users, res_partner, product_template",
+        "docker exec eta-odoo cat /etc/odoo/odoo.conf",
+        "Host filesystem: /Users/ali/Development/ETA/{addons,config,data,logs,odoo,docker-compose.yml}"
+      ],
+      "new_findings": [
+        "Real Odoo 19 (official image) + Postgres 17 instance, running since 2026-07-06",
+        "Database 'eta_dev': 79 modules installed (base, Sales, Accounting) \u2014 Purchase and CRM apps NOT installed",
+        "Zero custom addons, zero real business data \u2014 company still named 'My Company'",
+        "A vendored, unused Odoo-19 source git clone sits alongside but is not used by the running container"
+      ],
+      "updated_findings": [
+        "Refines ADR-0003/ADR-0011: real Postgres version is 17 (not 16), real db name is 'eta_dev' (not 'eta')"
+      ],
+      "superseded_findings": []
+    },
+    {
+      "discovery_id": "DISC-0007",
+      "timestamp": "2026-07-24T19:20:00+00:00",
+      "scope": "Business-milestone pivot to architecture prep (Company Profile > Website > Odoo > Procurement). Local KB read of the real Company Profile doc, plus live browser verification of the public website and a previously-unknown operations portal.",
+      "sources_inspected": [
+        "/Users/ali/Documents/ETA/ETA-Blueprint/20-BRANDING/02-Company-Profile/Company-Profile.md (full content read)",
+        "/Users/ali/Documents/ETA/ETA-Blueprint/20-BRANDING/03-Website/{Sitemap,Content,Technical,SEO}.md (full content read)",
+        "https://exiratlas.com — Home, About, Products, Contact pages (live, direct browser navigation)",
+        "https://portal.exiratlas.com — login page only, not authenticated (live, direct browser navigation)",
+        "docs/architecture/CONFLICT-REPORT.md (repo, full content read)"
+      ],
+      "new_findings": [
+        "A real, 'Approved v1.0' Company Profile document exists at the Blueprint path above (ETA-CP-001) — resolves the prior UNKNOWN of where it lives. Still contains no legal registration number, address, or ownership/leadership detail.",
+        "exiratlas.com is a live, deployed public marketing site, currently online. Its actual content (product/trading-house positioning, 'no warehouse inventory' project-based model) diverges substantially from the Blueprint's 'Approved' website Content.md spec (AI-native ecosystem positioning, 12-section nav, customer/supplier portals) — the live site is much simpler (5-page nav: Home/About/Products/Industries/Contact).",
+        "portal.exiratlas.com is a live, separately-deployed 'ETA Operations Portal' (Persian-language login page, 'CRM Portal' link in the marketing site's footer) — previously completely unknown to this repo/session. Not logged into; only the login page was observed.",
+        "Live site's About page states the actual business model explicitly: project-based trading without holding warehouse inventory — a concrete fact not present in the Blueprint's Company Profile doc.",
+        "Neither exiratlas.com nor portal.exiratlas.com has any ADR, inventory entry, or repo representation prior to this discovery."
+      ],
+      "updated_findings": [],
+      "superseded_findings": []
+    },
+    {
+      "discovery_id": "DISC-0008",
+      "timestamp": "2026-07-24T20:00:00+00:00",
+      "scope": "Two direct user corrections/clarifications, given via chat, not documents: (1) redefinition of 'Company Profile' as a sales/marketing brochure, not a legal/ERP record; (2) the real legacy system chain behind portal.exiratlas.com.",
+      "sources_inspected": [
+        "User statement (this conversation, 2026-07-24) — Company Profile definition correction",
+        "User statement (this conversation, 2026-07-24) — system architecture chain, explicitly called VERIFIED by the user"
+      ],
+      "new_findings": [
+        "'Company Profile' for ETA means Corporate Brochure / Capability Statement / Company Resume — a sales tool for prospective customers, explicitly NOT legal/registration/ERP-master-data/governance documentation. Supersedes this session's earlier DISC-0007-era interpretation.",
+        "portal.exiratlas.com is NOT Microsoft Dynamics CRM. It is a temporary operational portal.",
+        "Microsoft Dynamics CRM 2016 On-Premise is a separate, on-premise legacy system, distinct from the portal.",
+        "Full legacy chain, user-stated and marked VERIFIED: Public Website -> Temporary Portal -> Microsoft Dynamics CRM 2016 On-Premise -> Odoo ERP -> ETA Platform.",
+        "The ETA Platform (this repository's target architecture) is intended to eventually replace the Temporary Portal specifically, not the whole chain at once."
+      ],
+      "updated_findings": [
+        "Refines ADR-0013: the Dynamics CRM target is specifically version 2016, On-Premise, and sits between the temporary portal and Odoo ERP in the real system chain — not directly reachable from the public website.",
+        "Refines CR-008 in docs/architecture/CONFLICT-REPORT.md: the 'is the portal Dynamics?' open question is now answered (no)."
+      ],
+      "superseded_findings": [
+        "This session's earlier (same-conversation, pre-correction) framing of 'Company Profile' as involving legal entity/registration data is superseded by the user's direct correction — not deleted from the transcript, but must not be treated as the working definition going forward."
+      ]
+    },
+    {
+      "discovery_id": "DISC-0009",
+      "timestamp": "2026-07-24T20:20:00+00:00",
+      "scope": "Formal architecture decision from the user, recorded as ADR-0016: removal of Microsoft Dynamics CRM from ETA-System's target architecture, superseding ADR-0013.",
+      "sources_inspected": [
+        "User statement (this conversation, 2026-07-24) — 'Architecture Decision Update', explicit and directive, not exploratory"
+      ],
+      "new_findings": [
+        "Microsoft Dynamics CRM is removed from the target architecture entirely — not repositioned, removed. Any legacy data migrates once into Odoo, then Dynamics is retired.",
+        "New target chain: Website -> ETA Platform -> Odoo ERP.",
+        "The ETA Platform extends Odoo rather than replacing it.",
+        "Odoo ERP is declared the single source of truth for: Sales, Purchase, Inventory, Accounting, Contacts, Documents, Projects, Helpdesk, Approvals.",
+        "Explicit instruction: do not design a standalone CRM; do not reference Dynamics in future architecture except for the one-time legacy migration."
+      ],
+      "updated_findings": [
+        "Supersedes DISC-0008's 'legacy chain' finding (Website -> Portal -> Dynamics -> Odoo -> ETA Platform) — Dynamics is no longer part of the ongoing chain at all, only a one-time migration source.",
+        "ADR-0013 status updated to 'Superseded by ADR-0016'.",
+        "Raises a new, unresolved, high-priority question (recorded in CR-008 and .claude/memory/odoo.md): does domains/procurement-core's own Postgres persistence remain authoritative, or does Odoo become the single source of truth with domains/ as an orchestration layer over it?"
+      ],
+      "superseded_findings": [
+        "DISC-0008's legacy-chain finding is superseded by this record for the Dynamics-related portion specifically; DISC-0008's Company-Profile-definition finding and portal-is-not-Dynamics finding both still stand and are not affected."
+      ]
+    },
+    {
+      "discovery_id": "DISC-0010",
+      "timestamp": "2026-07-24T21:00:00+00:00",
+      "scope": "Implementation: ADR-0017 (Single Source of Truth) written and the procurement-core/suppliers persistence refactor executed — Postgres-backed repositories replaced with Odoo-API-backed repositories, per explicit user instruction to refactor, not just plan.",
+      "sources_inspected": [
+        "domains/procurement-core, domains/suppliers, integrations/odoo, platform/persistence, apps/bff (all read and modified this session)"
+      ],
+      "new_findings": [
+        "New platform/odoo package (@eta/odoo-client) created: OdooClient (XML-RPC transport, moved from integrations/odoo, extended with create/write/unlink) + id-mapping helpers. Zero dependency on domains/* — mirrors platform/persistence's role for Postgres.",
+        "domains/procurement-core/adapters/outbound/odoo-purchase-order-repository.ts and domains/suppliers/adapters/outbound/odoo-supplier-repository.ts implement the existing repository ports against Odoo's purchase.order/purchase.order.line and res.partner models respectively — domain/application layers unchanged, only the adapter swapped, per ADR-0017's stated design.",
+        "Identity round-tripping requires new custom fields on the real Odoo instance: x_eta_id (purchase.order, res.partner), x_eta_status (both), x_eta_category and x_eta_certifications (res.partner only). Not yet provisioned on the real environment (ADR-0015) — implemented and unit-tested, not live-verified.",
+        "Postgres repositories, migrations, and integrations/odoo's old sync classes (OdooPurchaseOrderSync, OdooSupplierSync) deleted as obsolete — no duplicate persistence, per explicit instruction. integrations/odoo returned to a README-only stub pending a new purpose.",
+        "apps/bff no longer opens any Postgres connection — one shared OdooClient wired in main.ts instead. tsconfig.base.json path for @eta/integration-odoo removed; @eta/odoo-client added."
+      ],
+      "updated_findings": [
+        "Resolves the unresolved persistence-authority question raised in ADR-0016/DISC-0009 and .claude/memory/odoo.md: Odoo is authoritative, domains/ adapters are now Odoo-backed, not the reverse.",
+        "Full test suite (30 tests, 5 files) and a clean `tsc --build apps/bff/tsconfig.json` confirmed after the refactor — logic verified, live Odoo connectivity not yet verified."
+      ],
+      "superseded_findings": [
+        "All prior discovery/inventory entries describing PostgresPurchaseOrderRepository / PostgresSupplierRepository as the live adapters are superseded by this record — those files no longer exist."
+      ]
+    }
+  ]
+}

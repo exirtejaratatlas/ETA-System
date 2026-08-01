@@ -1,0 +1,31 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["ES2022"],
+    "strict": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "composite": true,
+    "baseUrl": ".",
+    "rootDir": ".",
+    "paths": {
+      "@eta/kernel": ["platform/kernel/src/index.ts"],
+      "@eta/persistence": ["platform/persistence/src/index.ts"],
+      "@eta/odoo-client": ["platform/odoo/src/index.ts"],
+      "@eta/events": ["platform/events/src/index.ts"],
+      "@eta/secrets": ["platform/secrets/src/index.ts"],
+      "@eta/observability": ["platform/observability/src/index.ts"],
+      "@eta/feature-flags": ["platform/feature-flags/src/index.ts"],
+      "@eta/domain-suppliers": ["domains/suppliers/index.ts"],
+      "@eta/domain-suppliers/adapters/outbound": ["domains/suppliers/adapters/outbound/index.ts"],
+      "@eta/domain-procurement-core": ["domains/procurement-core/index.ts"],
+      "@eta/domain-procurement-core/adapters/outbound": ["domains/procurement-core/adapters/outbound/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp", "ai"]
+}

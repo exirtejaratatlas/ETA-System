@@ -1,0 +1,18 @@
+{
+  "name": "feature-flags",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "platform/feature-flags/src",
+  "projectType": "library",
+  "tags": ["scope:platform", "type:feature-flags"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/platform/feature-flags",
+        "main": "platform/feature-flags/src/index.ts",
+        "tsConfig": "platform/feature-flags/tsconfig.lib.json"
+      }
+    }
+  }
+}

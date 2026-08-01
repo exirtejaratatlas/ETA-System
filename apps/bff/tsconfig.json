@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "files": [],
+  "include": [],
+  "references": [
+    { "path": "./tsconfig.lib.json" },
+    { "path": "../../platform/kernel/tsconfig.lib.json" },
+    { "path": "../../platform/odoo/tsconfig.lib.json" },
+    { "path": "../../domains/suppliers/tsconfig.lib.json" },
+    { "path": "../../domains/procurement-core/tsconfig.lib.json" }
+  ]
+}

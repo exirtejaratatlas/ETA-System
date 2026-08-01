@@ -1,0 +1,44 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: eta_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: eta
+      POSTGRES_USER: eta
+      POSTGRES_PASSWORD: eta_dev_local_only
+    ports:
+      # Host port 5432 is already claimed by a pre-existing, unrelated Postgres
+      # container on this machine (eta-postgres, running since 2026-07-06) —
+      # mapped to 5433 here to avoid the conflict.
+      - '5433:5432'
+    volumes:
+      - eta_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U eta -d eta']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.0
+    container_name: eta_keycloak
+    restart: unless-stopped
+    command: start-dev
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin_dev_local_only
+      KC_HEALTH_ENABLED: 'true'
+    ports:
+      - '8080:8080'
+
+  nats:
+    image: nats:2.10-alpine
+    container_name: eta_nats
+    restart: unless-stopped
+    command: ['-js']
+    ports:
+      - '4222:4222'
+
+volumes:
+  eta_postgres_data:

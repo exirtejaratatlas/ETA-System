@@ -1,0 +1,30 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc",
+    "declaration": true,
+    "types": [
+      "node"
+    ]
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "src/**/*.spec.ts"
+  ],
+  "references": [
+    {
+      "path": "../../platform/kernel/tsconfig.lib.json"
+    },
+    {
+      "path": "../../platform/odoo/tsconfig.lib.json"
+    },
+    {
+      "path": "../../domains/suppliers/tsconfig.lib.json"
+    },
+    {
+      "path": "../../domains/procurement-core/tsconfig.lib.json"
+    }
+  ]
+}
